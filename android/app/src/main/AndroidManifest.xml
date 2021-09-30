@@ -1,7 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.demo_sprints">
+    package="com.sprints.testApp">
+
+   <uses-permission android:name="android.permission.INTERNET" />
    <application
-        android:label="demo_sprints"
+        android:label="Test App"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

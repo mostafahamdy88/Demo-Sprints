@@ -11,9 +11,6 @@ class _settingsState extends State<settings> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: new AppBar(
-        title: Text("Settings"),
-      ),
       body: Center(
           child: Column(
         mainAxisAlignment: MainAxisAlignment.center,

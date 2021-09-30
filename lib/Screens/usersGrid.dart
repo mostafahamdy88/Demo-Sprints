@@ -28,7 +28,6 @@ class _usersGridState extends State<usersGrid> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
       body: isLoading
           ? const Center(
               child: CircularProgressIndicator(),

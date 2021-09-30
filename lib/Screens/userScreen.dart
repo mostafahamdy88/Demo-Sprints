@@ -25,19 +25,39 @@ class _userScreenState extends State<userScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: PreferredSize(
+        preferredSize: const Size(0, 70),
+        child: Container(
+          child: Column(
+            children: [
+              const Padding(
+                  padding: EdgeInsets.fromLTRB(0, 40, 0, 0),
+                  child: Text(
+                    "Users View",
+                    style: TextStyle(fontSize: 30, color: Colors.white),
+                  ))
+            ],
+          ),
+          decoration: const BoxDecoration(
+              color: Colors.blue,
+              borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(50.0),
+                  bottomRight: Radius.circular(50.0))),
+        ),
+      ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentIndex,
         onTap: _onItemTap,
         items: [
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             icon: Icon(Icons.home, color: Colors.blue),
             label: "Home",
           ),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             icon: Icon(Icons.settings, color: Colors.blue),
             label: "Settings",
           ),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             icon: Icon(Icons.person, color: Colors.blue),
             label: "Profile",
           )

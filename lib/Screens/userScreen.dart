@@ -1,9 +1,12 @@
-// ignore_for_file: file_names
+// ignore_for_file: file_names, prefer_const_literals_to_create_immutables
 
 import 'package:demo_sprints/Model/User.dart';
+import 'package:demo_sprints/Screens/profile.dart';
 import 'package:demo_sprints/Screens/userDetails.dart';
+import 'package:demo_sprints/Screens/usersGrid.dart';
 import 'package:demo_sprints/Services/userService.dart';
 import 'package:flutter/material.dart';
+import 'package:demo_sprints/Screens/settings.dart';
 
 class userScreen extends StatefulWidget {
   @override
@@ -11,59 +14,36 @@ class userScreen extends StatefulWidget {
 }
 
 class _userScreenState extends State<userScreen> {
-  @override
-  List<User> usersList = [];
-  bool isLoading = true;
-
-  getUserList() async {
-    usersList = await userService().getUsers();
-    isLoading = false;
-    setState(() {});
+  int currentIndex = 0;
+  List<Widget> pages = [usersGrid(), settings(), profile()];
+  void _onItemTap(int index) {
+    setState(() {
+      currentIndex = index;
+    });
   }
 
   @override
-  void initState() {
-    super.initState();
-    getUserList();
-  }
-
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      body: isLoading
-          ? const Center(
-              child: CircularProgressIndicator(),
-            )
-          : ListView.builder(
-              itemCount: usersList.length,
-              itemBuilder: (BuildContext context, int index) {
-                return ListTile(
-                  title: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text("${usersList[index].name}",
-                    style: const TextStyle(
-                      color: Colors.blue,
-                            fontSize: 22,
-                    ),
-                    ),
-                  ),
-                  trailing: const Icon(
-                    Icons.people,
-                    color: Colors.blue
-                    ),
-                  enabled: true,
-                  onTap: () => {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => UserDetails(),
-                            settings: RouteSettings(
-                              arguments: usersList[index],
-                            )))
-                  },
-                );
-              },
-            ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: currentIndex,
+        onTap: _onItemTap,
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home, color: Colors.blue),
+            label: "Home",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings, color: Colors.blue),
+            label: "Settings",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person, color: Colors.blue),
+            label: "Profile",
+          )
+        ],
+      ),
+      body: pages[currentIndex],
     );
   }
 }

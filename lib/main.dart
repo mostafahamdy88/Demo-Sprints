@@ -16,6 +16,7 @@ class MyApp extends StatelessWidget {
       title: 'Test App',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        fontFamily: 'Cairo',
       ),
     );
   }

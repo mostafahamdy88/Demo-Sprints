@@ -2,7 +2,7 @@ import 'package:demo_sprints/Screens/login.dart';
 import 'package:flutter/material.dart';
 
 class StartPage extends StatefulWidget {
-  const StartPage({Key? key}) : super(key: key);
+  const StartPage({Key key}) : super(key: key);
 
   @override
   _StartPageState createState() => _StartPageState();

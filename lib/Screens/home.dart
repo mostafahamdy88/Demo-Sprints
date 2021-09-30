@@ -1,8 +1,10 @@
+// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, unnecessary_new
+
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
   String name, password;
-  HomePage({required this.name, required this.password});
+  HomePage({ this.name, this.password});
 
   @override
   Widget build(BuildContext context) {
